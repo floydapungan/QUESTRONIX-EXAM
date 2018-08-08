@@ -9,6 +9,12 @@ var db = mysql.createConnection({
     database: 'YOUR DATABASENAME',
 });
 
+db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log('MySQL Connected...');
+});
 
 
 app.listen(3000, () =>
