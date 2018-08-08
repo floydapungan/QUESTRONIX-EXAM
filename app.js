@@ -2,11 +2,13 @@ const mysql = require('mysql');
 const express = require('express');
 var app = express();
 
+app.set('view engine', 'ejs');
+
 var db = mysql.createConnection({
     host: 'YOUR HOST',
     user: 'YOUR USER',
     password: 'YOUR PASSWORD',
-    database: 'YOUR DATABASENAME',
+    database: 'mysample',
 });
 
 db.connect((err) => {
