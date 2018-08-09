@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var app = express();
 
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 app.set('view engine', 'ejs');
 
 var db = mysql.createConnection({
