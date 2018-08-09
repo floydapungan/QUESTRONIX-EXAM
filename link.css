@@ -94,3 +94,30 @@ input, select {
 }
 
 /*MYCODE*/
+nav {
+  text-align: center;
+  background: url(seashore.jpg);
+  background-size: 120%;
+}
+
+
+.costumer {
+  font-family: fantasy;
+  color: cyan;
+  font-size: 23px;
+}
+.welcome-message {
+  font-family: fantasy;
+  color: #FFFFFF;
+  font-size: 32px;
+}
+.bili {
+  font-family: fantasy;
+  color: #339999;
+  font-size: 23px;
+}
+.quantity {
+  font-family: fantasy;
+  color: cyan;
+  font-size: 23px;
+}
