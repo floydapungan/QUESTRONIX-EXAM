@@ -34,6 +34,21 @@ app.get('/Lemonjuice.jpg', (req, res) =>{
 app.get('/seashore.jpg', (req, res) =>{
   res.sendFile(__dirname + '/seashore.jpg');
 });
+//READ
+app.get('/records', (req, res) =>{
+  let sql = 'SELECT * FROM details'
+  let query = db.query(sql, (err, result) => {
+    if (err) throw err;
+
+    console.log('Fetched');
+    res.send(result);
+
+  });
+});
+
+
+
+
 app.listen(3000, () =>
  console.log('Express server is running at port no : 3000')
 );
