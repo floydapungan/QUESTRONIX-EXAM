@@ -21,7 +21,19 @@ db.connect((err) => {
     console.log('MySQL Connected...');
 });
 
+var lemonjuice = 75;
 
+app.get('/', (req, res) =>{
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/Lemonjuice.jpg', (req, res) =>{
+  res.sendFile(__dirname + '/Lemonjuice.jpg');
+});
+
+app.get('/seashore.jpg', (req, res) =>{
+  res.sendFile(__dirname + '/seashore.jpg');
+});
 app.listen(3000, () =>
  console.log('Express server is running at port no : 3000')
 );
