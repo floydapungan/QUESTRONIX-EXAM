@@ -39,11 +39,24 @@ app.get('/records', (req, res) =>{
   let sql = 'SELECT * FROM details'
   let query = db.query(sql, (err, result) => {
     if (err) throw err;
-
     console.log('Fetched');
     res.send(result);
-
   });
+});
+//INSERT
+app.post('/index', urlencodedParser, (req, res) =>{
+    var submit = req.body;
+    var name = submit.name;
+    var quan = parseInt(submit.quan);
+    var amount = lemonjuice * quan;
+    let post =  {name: name, quantity: quan, amount: amount};
+    let sql = 'INSERT INTO details SET ?';
+    let query = db.query(sql, post, (err, result) => {
+      if (err)  throw err;
+      console.log(result);
+  //SEND requested parameter name to 'thanks'
+  res.render('thanks', {person: req.body.name, quantity: req.body.quan});
+});
 });
 
 
