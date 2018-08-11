@@ -3,9 +3,177 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>RECORDS</title>
+    <title>TRANSACTION RECORDS</title>
+    <style>
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+         width: 1349px;
+         height: 800px;
+         text-align: center;
+         background: url(seashore.jpg);
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+
+      #div1 {
+         overflow-y: scroll;
+         overflow-x: hidden;
+         width: 674px;
+         height: 360px;
+         margin-left: 340px;
+      }
+      table, td, th {
+          border: 5px solid black;
+          text-align: center;
+      }
+
+      table {
+          margin-left: none;
+          border-collapse: collapse;
+          width: 100%;
+      }
+      th {
+        padding: 0px;
+        text-align: center;
+        background-color: #4CAF50;
+        color: white;
+        height: 20px;
+        vertical-align: center;
+
+            }
+      td {
+        padding-top: 1px;
+        padding-bottom: 1px;
+        text-align: center;
+        background-color: #E6E6FA;
+        color: black;
+        }
+      #record {
+        width: 650px;
+        height: 100px;
+        margin-left: 360px;
+        font-size: 40px;
+        font-family: fantasy;
+        padding-top: 50px;
+        color: #008B8B;
+        }
+      ul {
+        margin-left: 40px;
+        }
+      ul li {
+        list-style: none;
+        display: inline-block;
+        float: center;
+        }
+      ul li a {
+        text-decoration: none;
+        font-size: 30px;
+        font-family: fantasy;
+        color: #800000
+      }
+      ul li a:hover {
+        color: #7FFFD4;
+      }
+      #tabs {
+        padding-top:30px;
+      }
+      form {
+        text-align: left;
+        font-family: fantasy;
+        color: #000080;
+        font-size: 18px;
+      }
+      #trans {
+        font-size: 20px;
+        font-family: fantasy;
+        color: #800000;
+        text-align: center;
+      }
+      #submit {
+        font-family: fantasy;
+        color: #339999;
+        font-size: 18px;
+      }
+      #wrapper {
+        width: 700px;
+        height: 200px;
+        margin-left: 350px;
+        padding-top: 20px
+
+      }
+      .edit {
+          width: 340px;
+          float: left;
+        }
+      .delete {
+        width: 340px;
+        float: right;
+
+      }
+    </style>
   </head>
+  
   <body>
-    
+    <nav>
+      <div id= "record">
+        <p>TRANSACTION RECORDS</p>
+      </div>
+
+    <div id = "div1">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>QUANTITY</th>
+          <th>AMOUNT</th>
+        </tr>
+        <% for(var i = 0; i < a.length; i++) { %>
+        <tr>
+          <td><%= a[i].id %></td>
+          <td><%= a[i].name %></td>
+          <td><%= a[i].quantity %></td>
+          <td><%= a[i].amount %></td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+
+    <div id ="wrapper">
+
+      <div class = "edit">
+
+      <form method = POST action = /updatepost>
+      <p id = "trans">EDIT TRANSACTION</p><br>
+
+      <p>Change ID:<input type = "text" name = "id" placeholder = "Edit ID" ><br>
+      Change Name:<input type = "text" name = "name" placeholder = "Edit Name"><br>
+      Change Quantity:<input type = "text" name = "quan" placeholder= "Edit Quantity"></p><br>
+
+
+       <button type="submit" name="submit1"><p id = "submit">EDIT NOW!</p></button>
+      </form>
+    </div>
+
+      <div class = "delete">
+        <form method = POST action = /delete>
+            <p id = "trans">DELETE TRANSACTION</p><br>
+            <p>DELETE DETAILS OF ID:<input type = "text" name = "id" placeholder = "Enter ID" size = "4"></p><br>
+            <button type="submit" name="submit1"><p id = "submit">DELETE NOW!</p></button>
+        </form>
+
+      </div>
+    </div>
+
+    <div id="tabs">
+      <ul>
+        <li><a href = "/">GO TO HOMEPAGE</li>
+      </div>
+
+
+  </nav>
   </body>
 </html>
