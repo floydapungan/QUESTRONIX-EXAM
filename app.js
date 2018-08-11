@@ -40,7 +40,8 @@ app.get('/records', (req, res) =>{
   let query = db.query(sql, (err, result) => {
     if (err) throw err;
     console.log('Fetched');
-    res.send(result);
+    var a = result;
+    res.send('table', {a});
   });
 });
 //INSERT
