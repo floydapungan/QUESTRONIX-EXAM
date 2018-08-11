@@ -82,6 +82,20 @@ app.post('/updatepost', urlencodedParser, (req, res) =>{
 }
 });
 
+//DELETE DATA
+app.post('/delete', urlencodedParser, (req, res) =>{
+  if (req.body.id < 1) {
+    res.redirect('/records');
+  } else {
+  let sql = `DELETE FROM details WHERE id = '${req.body.id}'`;
+  let query = db.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.redirect('/records');
+  });
+}
+});
+
 app.listen(4000, () =>
  console.log('Express server is running at port no : 4000')
 );
