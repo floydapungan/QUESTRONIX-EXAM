@@ -46,6 +46,10 @@ app.get('/records', (req, res) =>{
 });
 //INSERT
 app.post('/index', urlencodedParser, (req, res) =>{
+    
+    if (req.body.name < 1 || req.body.quan < 1) {
+    res.redirect('/');
+    } else {
     var submit = req.body;
     var name = submit.name;
     var quan = parseInt(submit.quan);
@@ -58,11 +62,26 @@ app.post('/index', urlencodedParser, (req, res) =>{
   //SEND requested parameter name to 'thanks'
   res.render('thanks', {person: req.body.name, quantity: req.body.quan});
 });
+}
 });
 
+//UPDATE DATA
+app.post('/updatepost', urlencodedParser, (req, res) =>{
+  if (req.body.id < 1 || req.body.name < 1 || req.body.quan < 1) {
+    res.redirect('/records');
+  } else {
+  var newName = req.body.name;
+  var newQuan = req.body.quan;
+  var newAmount = lemonjuice * newQuan;
+  let sql = `UPDATE details SET name = '${newName}', quantity = '${newQuan}', amount = '${newAmount}'  WHERE id = ${req.body.id}`;
+  let query = db.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.redirect('/records');
+  });
+}
+});
 
-
-
-app.listen(3000, () =>
- console.log('Express server is running at port no : 3000')
+app.listen(4000, () =>
+ console.log('Express server is running at port no : 4000')
 );
